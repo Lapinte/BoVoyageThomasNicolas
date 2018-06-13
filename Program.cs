@@ -10,7 +10,7 @@ namespace BoVoyage_Thomas_Nicolas
     {
         static void Main(string[] args)
         {
-            fffff
+            
         }
     }
 }
