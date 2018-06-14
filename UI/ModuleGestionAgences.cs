@@ -60,21 +60,40 @@ namespace BoVoyage_Thomas_Nicolas.UI
         {
             ConsoleHelper.AfficherEntete("Agences");
 
-            Console.WriteLine("TO DO");
+            var liste = Application.GetBaseDonnees().Agences.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
 
         private void AjouterAgence()
         {
             ConsoleHelper.AfficherEntete("Ajouter une Agence");
 
-            Console.WriteLine("TO DO");
+            var agence = new AgenceVoyage
+            {
+                Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : ")
+            };
+
+            using (var bd = Application.GetBaseDonnees())
+            {
+                bd.Agences.Add(agence);
+                bd.SaveChanges();
+            }
         }
 
         private void SupprimerAgence()
         {
             ConsoleHelper.AfficherEntete("Supprimer une Agence");
 
-            Console.WriteLine("TO DO");
+            var liste = Application.GetBaseDonnees().Agences.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var agence = bd.Agences.Single(x => x.Id == id);
+                bd.Agences.Remove(agence);
+                bd.SaveChanges();
+            }
         }
     }
 }

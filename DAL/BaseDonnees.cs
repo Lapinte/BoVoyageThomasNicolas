@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using BoVoyage_Thomas_Nicolas.Metier;
 
 
 namespace BoVoyage_Thomas_Nicolas.DAL
@@ -20,8 +21,6 @@ namespace BoVoyage_Thomas_Nicolas.DAL
         public DbSet<Destination> Destinations { get; set; }
 
         public DbSet<Voyage> Voyages { get; set; }
-
-        public DbSet<Location> Locations { get; set; }
 
         public DbSet<DossierReservation> DossierReservations { get; set; }
 

@@ -34,7 +34,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void InitialiserMenu()
         {
-            this.menu = new Menu("Gestion des Voyages");
+            this.menu = new Menu("Gestion des Clients");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les Clients")
             {
                 FonctionAExecuter = this.AfficherClients
@@ -62,21 +62,22 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void AfficherClients()
         {
-            ConsoleHelper.AfficherEntete("Voyages disponibles");
+            ConsoleHelper.AfficherEntete("Clients");
 
-            Console.WriteLine("TO DO");
+            var liste = Application.GetBaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
         }
 
         private void AjouterClient()
         {
-            ConsoleHelper.AfficherEntete("Ajouter un voyage");
+            ConsoleHelper.AfficherEntete("Ajouter un client");
 
             Console.WriteLine("TO DO");
         }
 
         private void SupprimerClient()
         {
-            ConsoleHelper.AfficherEntete("Supprimer un voyage");
+            ConsoleHelper.AfficherEntete("Supprimer un client");
 
             Console.WriteLine("TO DO");
         }
