@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoVoyage_Thomas_Nicolas.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,10 @@ namespace BoVoyage_Thomas_Nicolas
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ceci est un test GitHub!!!");
-            Console.WriteLine("Je sens que ça va être fun demain!!!");
+            {
+                var application = new Application();
+                application.Demarrer();
+            }
         }
     }
 }

@@ -9,5 +9,7 @@ namespace BoVoyage_Thomas_Nicolas.Metier
     public class Client : Personne
     {
         public string Email { get; set; }
+
+        public DossierReservation DossierReservation { get; set; } 
     }
 }
