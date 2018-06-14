@@ -1,195 +1,200 @@
-﻿USE [BoVoyage]
+﻿drop database BoVoyage
+go
+
+create database BoVoyage
+go
+USE [BoVoyage]
 GO
-/****** Object:  Table [dbo].[Agences]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Agences]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Agences](
-	[id_Agence] [int] IDENTITY(1,1) NOT NULL,
-	[nom] [varchar](20) NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nom] [varchar](20) NULL,
  CONSTRAINT [PK__Agences__B290B2B748119F40] PRIMARY KEY CLUSTERED 
 (
-	[id_Agence] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Assurances]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Assurances]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Assurances](
-	[id_Reservation] [int] NOT NULL,
-	[assuranceAnnulation] [bit] NULL,
+	[Id] [int] NOT NULL,
+	[AssuranceAnnulation] [bit] NULL,
 PRIMARY KEY CLUSTERED 
 (
-	[id_Reservation] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Clients]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Clients]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Clients](
-	[id_Personne] [int] IDENTITY(1,1) NOT NULL,
-	[id_Reservation] [int] NULL,
-	[civilite] [varchar](5) NULL,
-	[nom] [varchar](15) NULL,
-	[prenom] [varchar](15) NULL,
-	[adresse] [varchar](30) NULL,
-	[telephone] [varchar](15) NULL,
-	[dateNaissance] [date] NULL,
-	[email] [varchar](30) NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdReservation] [int] NULL,
+	[Civilite] [varchar](5) NULL,
+	[Nom] [varchar](15) NULL,
+	[Prenom] [varchar](15) NULL,
+	[Adresse] [varchar](30) NULL,
+	[Telephone] [varchar](15) NULL,
+	[DateNaissance] [date] NULL,
+	[Email] [varchar](30) NULL,
  CONSTRAINT [PK__Clients__B0310E25EC474362] PRIMARY KEY CLUSTERED 
 (
-	[id_Personne] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Destinations]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Destinations]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Destinations](
-	[id_Destination] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Continent] [varchar](15) NULL,
 	[Pays] [varchar](30) NULL,
 	[Region] [varchar](20) NULL,
-	[description] [varchar](100) NULL,
+	[Description] [varchar](100) NULL,
  CONSTRAINT [PK__Destinat__E4AD1CBDCFD11799] PRIMARY KEY CLUSTERED 
 (
-	[id_Destination] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Participants]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Participants]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Participants](
-	[id_Personne] [int] IDENTITY(1,1) NOT NULL,
-	[id_Reservation] [int] NULL,
-	[civilite] [varchar](5) NULL,
-	[nom] [varchar](15) NULL,
-	[prenom] [varchar](15) NULL,
-	[adresse] [varchar](30) NULL,
-	[telephone] [varchar](15) NULL,
-	[dateNaissance] [date] NULL,
-	[reduction] [decimal](18, 0) NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdReservation] [int] NULL,
+	[Civilite] [varchar](5) NULL,
+	[Nom] [varchar](15) NULL,
+	[Prenom] [varchar](15) NULL,
+	[Adresse] [varchar](30) NULL,
+	[Telephone] [varchar](15) NULL,
+	[DateNaissance] [date] NULL,
+	[Reduction] [decimal](18, 0) NULL,
  CONSTRAINT [PK__Particip__B0310E2577F81F82] PRIMARY KEY CLUSTERED 
 (
-	[id_Personne] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Reservations]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Reservations]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Reservations](
-	[id_Voyage] [int] NOT NULL,
-	[id_Reservation] [int] IDENTITY(1,1) NOT NULL,
-	[numeroCarteBancaire] [int] NULL,
-	[statutAnnulation] [bit] NULL,
-	[statutValidation] [bit] NULL,
-	[statutAcceptation] [bit] NULL,
+	[IdVoyages] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Numero] [int] NULL,
+	[StatutAnnulation] [bit] NULL,
+	[StatutValidation] [bit] NULL,
+	[StatutAcceptation] [bit] NULL,
  CONSTRAINT [PK__Reservat__03B68AA1C99F8E6C] PRIMARY KEY CLUSTERED 
 (
-	[id_Reservation] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Voyages]    Script Date: 14/06/2018 15:13:15 ******/
+/****** Object:  Table [dbo].[Voyages]    Script Date: 14/06/2018 15:33:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Voyages](
-	[id_Voyage] [int] IDENTITY(1,1) NOT NULL,
-	[id_Destination] [int] NULL,
-	[id_Agence] [int] NULL,
-	[dateAller] [date] NULL,
-	[dateRetour] [date] NULL,
-	[placesDisponibles] [int] NULL,
-	[tarifToutCompris] [decimal](18, 0) NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdDestination] [int] NULL,
+	[IdAgence] [int] NULL,
+	[DateAller] [date] NULL,
+	[DateRetour] [date] NULL,
+	[PlacesDisponiblea] [int] NULL,
+	[TarifToutCompris] [decimal](18, 0) NULL,
  CONSTRAINT [PK__Voyages__EEAA7AB9820F5318] PRIMARY KEY CLUSTERED 
 (
-	[id_Voyage] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 SET IDENTITY_INSERT [dbo].[Agences] ON 
 
-INSERT [dbo].[Agences] ([id_Agence], [nom]) VALUES (34, N'Rouen')
-INSERT [dbo].[Agences] ([id_Agence], [nom]) VALUES (35, N'Paris')
-INSERT [dbo].[Agences] ([id_Agence], [nom]) VALUES (36, N'Sarlat')
-INSERT [dbo].[Agences] ([id_Agence], [nom]) VALUES (37, N'Marseille')
+INSERT [dbo].[Agences] ([Id], [Nom]) VALUES (34, N'Rouen')
+INSERT [dbo].[Agences] ([Id], [Nom]) VALUES (35, N'Paris')
+INSERT [dbo].[Agences] ([Id], [Nom]) VALUES (36, N'Sarlat')
+INSERT [dbo].[Agences] ([Id], [Nom]) VALUES (37, N'Marseille')
 SET IDENTITY_INSERT [dbo].[Agences] OFF
-INSERT [dbo].[Assurances] ([id_Reservation], [assuranceAnnulation]) VALUES (12, 0)
-INSERT [dbo].[Assurances] ([id_Reservation], [assuranceAnnulation]) VALUES (13, 1)
-INSERT [dbo].[Assurances] ([id_Reservation], [assuranceAnnulation]) VALUES (14, 1)
+INSERT [dbo].[Assurances] ([Id], [AssuranceAnnulation]) VALUES (12, 0)
+INSERT [dbo].[Assurances] ([Id], [AssuranceAnnulation]) VALUES (13, 1)
+INSERT [dbo].[Assurances] ([Id], [AssuranceAnnulation]) VALUES (14, 1)
 SET IDENTITY_INSERT [dbo].[Clients] ON 
 
-INSERT [dbo].[Clients] ([id_Personne], [id_Reservation], [civilite], [nom], [prenom], [adresse], [telephone], [dateNaissance], [email]) VALUES (3, 13, N'Mr', N'LAPINTE', N'Nicolas', N'Rouen', N'0600000000', CAST(N'1986-01-01' AS Date), N'nl@mail.com')
+INSERT [dbo].[Clients] ([Id], [IdReservation], [Civilite], [Nom], [Prenom], [Adresse], [Telephone], [DateNaissance], [Email]) VALUES (3, 13, N'Mr', N'LAPINTE', N'Nicolas', N'Rouen', N'0600000000', CAST(N'1986-01-01' AS Date), N'nl@mail.com')
 SET IDENTITY_INSERT [dbo].[Clients] OFF
 SET IDENTITY_INSERT [dbo].[Destinations] ON 
 
-INSERT [dbo].[Destinations] ([id_Destination], [Continent], [Pays], [Region], [description]) VALUES (7, N'Afrique', N'Namibie', NULL, NULL)
-INSERT [dbo].[Destinations] ([id_Destination], [Continent], [Pays], [Region], [description]) VALUES (8, N'Europe', N'France', N'Normandie', N'Rouen !!')
-INSERT [dbo].[Destinations] ([id_Destination], [Continent], [Pays], [Region], [description]) VALUES (9, N'Amérique du Sud', N'Chili', NULL, N'Santiago de Chili')
-INSERT [dbo].[Destinations] ([id_Destination], [Continent], [Pays], [Region], [description]) VALUES (10, N'Amérique du Sud', N'Argentine', NULL, N'Buenos Aires')
+INSERT [dbo].[Destinations] ([Id], [Continent], [Pays], [Region], [Description]) VALUES (7, N'Afrique', N'Namibie', NULL, NULL)
+INSERT [dbo].[Destinations] ([Id], [Continent], [Pays], [Region], [Description]) VALUES (8, N'Europe', N'France', N'Normandie', N'Rouen !!')
+INSERT [dbo].[Destinations] ([Id], [Continent], [Pays], [Region], [Description]) VALUES (9, N'Amérique du Sud', N'Chili', NULL, N'Santiago de Chili')
+INSERT [dbo].[Destinations] ([Id], [Continent], [Pays], [Region], [Description]) VALUES (10, N'Amérique du Sud', N'Argentine', NULL, N'Buenos Aires')
 SET IDENTITY_INSERT [dbo].[Destinations] OFF
 SET IDENTITY_INSERT [dbo].[Participants] ON 
 
-INSERT [dbo].[Participants] ([id_Personne], [id_Reservation], [civilite], [nom], [prenom], [adresse], [telephone], [dateNaissance], [reduction]) VALUES (15, 12, N'Mr', N'BAZAN', N'Yannick', N'Sarlat', N'0600000000', CAST(N'1985-01-01' AS Date), CAST(80 AS Decimal(18, 0)))
-INSERT [dbo].[Participants] ([id_Personne], [id_Reservation], [civilite], [nom], [prenom], [adresse], [telephone], [dateNaissance], [reduction]) VALUES (16, 13, N'Mr', N'LAPINTE', N'Nicolas', N'Rouen', N'0600000000', CAST(N'1986-01-01' AS Date), CAST(10 AS Decimal(18, 0)))
-INSERT [dbo].[Participants] ([id_Personne], [id_Reservation], [civilite], [nom], [prenom], [adresse], [telephone], [dateNaissance], [reduction]) VALUES (17, 13, N'Mme', N'LAPINTE', N'Madame', N'Rouen', N'0611223344', CAST(N'1986-02-02' AS Date), CAST(10 AS Decimal(18, 0)))
+INSERT [dbo].[Participants] ([Id], [IdReservation], [Civilite], [Nom], [Prenom], [Adresse], [Telephone], [DateNaissance], [Reduction]) VALUES (15, 12, N'Mr', N'BAZAN', N'Yannick', N'Sarlat', N'0600000000', CAST(N'1985-01-01' AS Date), CAST(80 AS Decimal(18, 0)))
+INSERT [dbo].[Participants] ([Id], [IdReservation], [Civilite], [Nom], [Prenom], [Adresse], [Telephone], [DateNaissance], [Reduction]) VALUES (16, 13, N'Mr', N'LAPINTE', N'Nicolas', N'Rouen', N'0600000000', CAST(N'1986-01-01' AS Date), CAST(10 AS Decimal(18, 0)))
+INSERT [dbo].[Participants] ([Id], [IdReservation], [Civilite], [Nom], [Prenom], [Adresse], [Telephone], [DateNaissance], [Reduction]) VALUES (17, 13, N'Mme', N'LAPINTE', N'Madame', N'Rouen', N'0611223344', CAST(N'1986-02-02' AS Date), CAST(10 AS Decimal(18, 0)))
 SET IDENTITY_INSERT [dbo].[Participants] OFF
 SET IDENTITY_INSERT [dbo].[Reservations] ON 
 
-INSERT [dbo].[Reservations] ([id_Voyage], [id_Reservation], [numeroCarteBancaire], [statutAnnulation], [statutValidation], [statutAcceptation]) VALUES (8, 12, 1111, 0, 0, 1)
-INSERT [dbo].[Reservations] ([id_Voyage], [id_Reservation], [numeroCarteBancaire], [statutAnnulation], [statutValidation], [statutAcceptation]) VALUES (10, 13, 136486, 1, 0, 0)
-INSERT [dbo].[Reservations] ([id_Voyage], [id_Reservation], [numeroCarteBancaire], [statutAnnulation], [statutValidation], [statutAcceptation]) VALUES (9, 14, 4684361, 0, 0, 1)
+INSERT [dbo].[Reservations] ([IdVoyages], [Id], [Numero], [StatutAnnulation], [StatutValidation], [StatutAcceptation]) VALUES (8, 12, 1111, 0, 0, 1)
+INSERT [dbo].[Reservations] ([IdVoyages], [Id], [Numero], [StatutAnnulation], [StatutValidation], [StatutAcceptation]) VALUES (10, 13, 136486, 1, 0, 0)
+INSERT [dbo].[Reservations] ([IdVoyages], [Id], [Numero], [StatutAnnulation], [StatutValidation], [StatutAcceptation]) VALUES (9, 14, 4684361, 0, 0, 1)
 SET IDENTITY_INSERT [dbo].[Reservations] OFF
 SET IDENTITY_INSERT [dbo].[Voyages] ON 
 
-INSERT [dbo].[Voyages] ([id_Voyage], [id_Destination], [id_Agence], [dateAller], [dateRetour], [placesDisponibles], [tarifToutCompris]) VALUES (8, 7, 34, CAST(N'2018-06-30' AS Date), CAST(N'2019-07-01' AS Date), 15, CAST(5000 AS Decimal(18, 0)))
-INSERT [dbo].[Voyages] ([id_Voyage], [id_Destination], [id_Agence], [dateAller], [dateRetour], [placesDisponibles], [tarifToutCompris]) VALUES (9, 10, 35, CAST(N'2018-07-01' AS Date), CAST(N'2018-07-15' AS Date), 1, CAST(30 AS Decimal(18, 0)))
-INSERT [dbo].[Voyages] ([id_Voyage], [id_Destination], [id_Agence], [dateAller], [dateRetour], [placesDisponibles], [tarifToutCompris]) VALUES (10, 8, 35, CAST(N'2018-07-01' AS Date), CAST(N'2018-07-08' AS Date), 1, CAST(50 AS Decimal(18, 0)))
+INSERT [dbo].[Voyages] ([Id], [IdDestination], [IdAgence], [DateAller], [DateRetour], [PlacesDisponiblea], [TarifToutCompris]) VALUES (8, 7, 34, CAST(N'2018-06-30' AS Date), CAST(N'2019-07-01' AS Date), 15, CAST(5000 AS Decimal(18, 0)))
+INSERT [dbo].[Voyages] ([Id], [IdDestination], [IdAgence], [DateAller], [DateRetour], [PlacesDisponiblea], [TarifToutCompris]) VALUES (9, 10, 35, CAST(N'2018-07-01' AS Date), CAST(N'2018-07-15' AS Date), 1, CAST(30 AS Decimal(18, 0)))
+INSERT [dbo].[Voyages] ([Id], [IdDestination], [IdAgence], [DateAller], [DateRetour], [PlacesDisponiblea], [TarifToutCompris]) VALUES (10, 8, 35, CAST(N'2018-07-01' AS Date), CAST(N'2018-07-08' AS Date), 1, CAST(50 AS Decimal(18, 0)))
 SET IDENTITY_INSERT [dbo].[Voyages] OFF
-ALTER TABLE [dbo].[Assurances]  WITH CHECK ADD  CONSTRAINT [FK_Reservation_Assurance] FOREIGN KEY([id_Reservation])
-REFERENCES [dbo].[Reservations] ([id_Reservation])
+ALTER TABLE [dbo].[Assurances]  WITH CHECK ADD  CONSTRAINT [FK_Reservation_Assurance] FOREIGN KEY([Id])
+REFERENCES [dbo].[Reservations] ([Id])
 GO
 ALTER TABLE [dbo].[Assurances] CHECK CONSTRAINT [FK_Reservation_Assurance]
 GO
-ALTER TABLE [dbo].[Clients]  WITH CHECK ADD  CONSTRAINT [FK_Reservation_Client] FOREIGN KEY([id_Reservation])
-REFERENCES [dbo].[Reservations] ([id_Reservation])
+ALTER TABLE [dbo].[Clients]  WITH CHECK ADD  CONSTRAINT [FK_Reservation_Client] FOREIGN KEY([IdReservation])
+REFERENCES [dbo].[Reservations] ([Id])
 GO
 ALTER TABLE [dbo].[Clients] CHECK CONSTRAINT [FK_Reservation_Client]
 GO
-ALTER TABLE [dbo].[Participants]  WITH CHECK ADD  CONSTRAINT [FK_Reservation] FOREIGN KEY([id_Reservation])
-REFERENCES [dbo].[Reservations] ([id_Reservation])
+ALTER TABLE [dbo].[Participants]  WITH CHECK ADD  CONSTRAINT [FK_Reservation] FOREIGN KEY([IdReservation])
+REFERENCES [dbo].[Reservations] ([Id])
 GO
 ALTER TABLE [dbo].[Participants] CHECK CONSTRAINT [FK_Reservation]
 GO
-ALTER TABLE [dbo].[Reservations]  WITH CHECK ADD  CONSTRAINT [FK_Voyage] FOREIGN KEY([id_Voyage])
-REFERENCES [dbo].[Voyages] ([id_Voyage])
+ALTER TABLE [dbo].[Reservations]  WITH CHECK ADD  CONSTRAINT [FK_Voyage] FOREIGN KEY([IdVoyages])
+REFERENCES [dbo].[Voyages] ([Id])
 GO
 ALTER TABLE [dbo].[Reservations] CHECK CONSTRAINT [FK_Voyage]
 GO
-ALTER TABLE [dbo].[Voyages]  WITH CHECK ADD  CONSTRAINT [FK_Destination] FOREIGN KEY([id_Destination])
-REFERENCES [dbo].[Destinations] ([id_Destination])
+ALTER TABLE [dbo].[Voyages]  WITH CHECK ADD  CONSTRAINT [FK_Destination] FOREIGN KEY([IdDestination])
+REFERENCES [dbo].[Destinations] ([Id])
 GO
 ALTER TABLE [dbo].[Voyages] CHECK CONSTRAINT [FK_Destination]
 GO
-ALTER TABLE [dbo].[Voyages]  WITH CHECK ADD  CONSTRAINT [FK_Voyages_Agences] FOREIGN KEY([id_Agence])
-REFERENCES [dbo].[Agences] ([id_Agence])
+ALTER TABLE [dbo].[Voyages]  WITH CHECK ADD  CONSTRAINT [FK_Voyages_Agences] FOREIGN KEY([IdAgence])
+REFERENCES [dbo].[Agences] ([Id])
 GO
 ALTER TABLE [dbo].[Voyages] CHECK CONSTRAINT [FK_Voyages_Agences]
 GO
