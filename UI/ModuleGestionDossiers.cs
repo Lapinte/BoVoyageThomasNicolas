@@ -84,7 +84,14 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 dossier.Voyage = bd.Voyages.Single(x => x.Id == idVoyage);
 
                 var listeClients = Application.GetBaseDonnees().Clients.ToList();
-                ConsoleHelper.AfficherListe(listeClients, strategieAffichageEntitesMetier);
+                ConsoleHelper.AfficherListe(listeClients, StrategiesAffichage.GetStrategieClient());
+                var idClient = ConsoleSaisie.SaisirEntierObligatoire("Choisissez un Client (ID) : ");
+                if (!bd.Clients.Any(x => x.Id == idClient))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Ce Client n'existe pas, retour au menu");
+                    return;
+                }
+
             }
         }
 
