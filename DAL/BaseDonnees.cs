@@ -25,5 +25,7 @@ namespace BoVoyage_Thomas_Nicolas.DAL
         public DbSet<DossierReservation> DossierReservations { get; set; }
 
         public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Participant> Participants { get; set; }
     }
 }

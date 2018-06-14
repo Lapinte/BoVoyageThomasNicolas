@@ -22,8 +22,23 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 20),
                 InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
                 InformationAffichage.Creer<Client>(x=>x.Telephone, "TEL", 15),
+                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 15),
+
             };
 
+        private static readonly List<InformationAffichage> strategieAffichageEntitesMetierParticipants =
+           new List<InformationAffichage>
+           {
+                InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Participant>(x=>x.Civilite, "Civilité", 10),
+                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Participant>(x=>x.Telephone, "TEL", 15),
+                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date de naissance", 15),
+
+           };
         private Menu menu;
 
         public ModuleGestionClients(Application application)
@@ -40,15 +55,19 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 FonctionAExecuter = this.AfficherClients
             });
-            this.menu.AjouterElement(new ElementMenu("2", "Rechercher un Client")
+            this.menu.AjouterElement(new ElementMenu("2", "Afficher les Participants")
+            {
+                FonctionAExecuter = this.AfficherParticipants
+            });
+            this.menu.AjouterElement(new ElementMenu("3", "Rechercher un Client")
             {
                 FonctionAExecuter = this.RechercherClient
             });
-            this.menu.AjouterElement(new ElementMenu("3", "Ajouter un Client")
+            this.menu.AjouterElement(new ElementMenu("4", "Ajouter un Client")
             {
                 FonctionAExecuter = this.AjouterClient
             });
-            this.menu.AjouterElement(new ElementMenu("4", "Supprimer un Client")
+            this.menu.AjouterElement(new ElementMenu("5", "Supprimer un Client")
             {
                 FonctionAExecuter = this.SupprimerClient
             });
@@ -94,7 +113,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             var DateNaissance = DateTime.Parse(Console.ReadLine());
             Console.WriteLine("Email");
             var Email = Console.ReadLine();
-
+            var Age = 20;
             //Avec Entity Framework
             Client nouveauClient = new Client
             {
@@ -104,7 +123,9 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 Adresse = Adresse,
                 Telephone = Telephone,
                 Email = Email,
-                DateNaissance = DateNaissance
+                DateNaissance = DateNaissance,
+                Age = Age
+               
                 //TODO : Calculer Age
             };
 
@@ -154,6 +175,14 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 }
             }
 
+        }
+
+        private void AfficherParticipants()
+        {
+            ConsoleHelper.AfficherEntete("Participants");
+
+            var liste = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetierParticipants);
         }
     }
 
