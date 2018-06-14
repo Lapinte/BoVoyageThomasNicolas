@@ -11,10 +11,16 @@ namespace BoVoyage_Thomas_Nicolas.UI
     {
         private Menu menuPrincipal;
         private ModuleGestionVoyages moduleGestionVoyages;
+        private ModuleGestionClients moduleGestionClients;
+        private ModuleGestionDestinations moduleGestionDestinations;
+        private ModuleGestionAgences moduleGestionAgences;
 
         private void InitialiserModules()
         {
             this.moduleGestionVoyages = new ModuleGestionVoyages(this);
+            this.moduleGestionClients = new ModuleGestionClients(this);
+            this.moduleGestionDestinations = new ModuleGestionDestinations(this);
+            this.moduleGestionAgences = new ModuleGestionAgences(this);
         }
 
         private void InitialiserMenuPrincipal()
@@ -24,6 +30,21 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionVoyages.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des Clients")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionClients.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion des Destinations")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionDestinations.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("4", "Gestion des Agences")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionAgences.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenuQuitterMenu("Q", "Quitter")
             {
