@@ -11,34 +11,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
 {
     public class ModuleGestionClients
     {
-        // On définit ici les propriétés qu'on veut afficher
-        //  et la manière de les afficher
-        private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilité", 10),
-                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
-                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 20),
-                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
-                InformationAffichage.Creer<Client>(x=>x.Telephone, "TEL", 15),
-                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
-                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 15),
-
-            };
-
-        private static readonly List<InformationAffichage> strategieAffichageEntitesMetierParticipants =
-           new List<InformationAffichage>
-           {
-                InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Participant>(x=>x.Civilite, "Civilité", 10),
-                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 20),
-                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prénom", 20),
-                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
-                InformationAffichage.Creer<Participant>(x=>x.Telephone, "TEL", 15),
-                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "Date de naissance", 15),
-
-           };
         private Menu menu;
 
         public ModuleGestionClients(Application application)
@@ -93,7 +65,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Clients");
 
             var liste = Application.GetBaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
+            ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieClient());
         }
 
         private void AjouterClient()
@@ -183,7 +155,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Participants");
 
             var liste = Application.GetBaseDonnees().Participants.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetierParticipants);
+            ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieParticipant());
         }
 
         private void RechercherParticipant()//TODO:ajouter méthode recherche avec saisie partielle du nom

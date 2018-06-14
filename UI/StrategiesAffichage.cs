@@ -19,7 +19,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 InformationAffichage.Creer<Destination>(x=>x.Continent, "Continent", 20),
                 InformationAffichage.Creer<Destination>(x=>x.Pays, "Pays", 15),
                 InformationAffichage.Creer<Destination>(x=>x.Region, "Région", 15),
-                InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 80),
+                InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 80)
             };
             return strategieAffichageDestinations;
         }
@@ -34,9 +34,42 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 15),
                 InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 15),
                 InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlacesDisponibles", 20),
-                InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "Tarif TTC par personne", 25),
+                InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "Tarif TTC par personne", 25)
             };
             return strategieAffichageVoyages;
+        }
+
+        public static List<InformationAffichage> GetStrategieClient()
+        {
+            List<InformationAffichage> strategieAffichageClients =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilité", 10),
+                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Client>(x=>x.Telephone, "TEL", 15),
+                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 15)
+            };
+            return strategieAffichageClients;
+        }
+
+        public static List<InformationAffichage> GetStrategieParticipant()
+        {
+            List<InformationAffichage> strategieAffichageParticipants =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilité", 10),
+                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prénom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Client>(x=>x.Telephone, "TEL", 15),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "Date de naissance", 15)
+            };
+            return strategieAffichageParticipants;
         }
     }
 }
