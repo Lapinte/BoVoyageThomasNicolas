@@ -63,6 +63,10 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 FonctionAExecuter = this.RechercherClient
             });
+            this.menu.AjouterElement(new ElementMenu("4", "Rechercher un Participant")
+            {
+                FonctionAExecuter = this.RechercherClient
+            });
             this.menu.AjouterElement(new ElementMenu("4", "Ajouter un Client")
             {
                 FonctionAExecuter = this.AjouterClient
@@ -154,7 +158,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void RechercherClient()//TODO:ajouter méthode recherche avec saisie partielle du nom
         {
-            Console.WriteLine("Saisir le nom exact d'un client à modifier:");
+            Console.WriteLine("Saisir le nom exact d'un client à afficher:");
             saisie:
             var saisie = Console.ReadLine();
 
@@ -169,10 +173,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             }
             else
             {
-                foreach (var Nom in client)
-                {
-                    Console.WriteLine(Nom);
-                }
+            ConsoleHelper.AfficherListe(client, strategieAffichageEntitesMetier);
             }
 
         }
@@ -183,6 +184,28 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
             var liste = Application.GetBaseDonnees().Participants.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetierParticipants);
+        }
+
+        private void RechercherParticipant()//TODO:ajouter méthode recherche avec saisie partielle du nom
+        {
+            Console.WriteLine("Saisir le nom exact d'un participant à afficher:");
+            saisie:
+            var saisie = Console.ReadLine();
+
+            BaseDonnees context = new BaseDonnees();
+            var participant = from Participant in context.Participants
+                         where Participant.Nom == saisie
+                         select Participant;
+            if (participant.Count() == 0)
+            {
+                Console.WriteLine("\nSaisie erronée, saisir le nom exact d'un produit à afficher:");
+                goto saisie;
+            }
+            else
+            {
+                ConsoleHelper.AfficherListe(participant, strategieAffichageEntitesMetierParticipants);
+            }
+
         }
     }
 
