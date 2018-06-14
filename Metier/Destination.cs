@@ -8,6 +8,7 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 {
     public class Destination
     {
+
         public int Id { get; set; }
 
         public string Continent { get; set; }
