@@ -145,7 +145,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             }
             else
             {
-            ConsoleHelper.AfficherListe(client, strategieAffichageEntitesMetier);
+            ConsoleHelper.AfficherListe(client, StrategiesAffichage.GetStrategieClient());
             }
 
         }
@@ -175,7 +175,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             }
             else
             {
-                ConsoleHelper.AfficherListe(participant, strategieAffichageEntitesMetierParticipants);
+                ConsoleHelper.AfficherListe(participant, StrategiesAffichage.GetStrategieParticipant());
             }
 
         }
