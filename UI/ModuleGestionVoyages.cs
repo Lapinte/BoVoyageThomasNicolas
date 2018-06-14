@@ -61,7 +61,11 @@ namespace BoVoyage_Thomas_Nicolas.UI
         {
             ConsoleHelper.AfficherEntete("Voyages disponibles");
 
-            Console.WriteLine("TO DO");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var listeVoyages = bd.Voyages.ToList();
+                ConsoleHelper.AfficherListe(listeVoyages, StrategiesAffichage.GetStrategieVoyage());
+            }
         }
 
         private void AjouterVoyage()
@@ -70,7 +74,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
             using (var bd = Application.GetBaseDonnees())
             {
-                var Voyage = new Voyage();
+                var voyage = new Voyage();
 
                 var listeDestination = bd.Destinations.ToList();
                 ConsoleHelper.AfficherListe(listeDestination, StrategiesAffichage.GetStrategieDestination());
@@ -81,6 +85,23 @@ namespace BoVoyage_Thomas_Nicolas.UI
                     ConsoleHelper.AfficherMessageErreur("Cette Destination n'existe pas, retour au menu");
                     return;
                 }
+                voyage.Destination = bd.Destinations.Single(x => x.Id == idDestination);
+
+                var dateAller = ConsoleSaisie.SaisirDateObligatoire("Choisissez la date de début du Voyage (AAAA-MM-JJ): ");
+                var dateRetour = ConsoleSaisie.SaisirDateObligatoire("Choisissez la date de fin du Voyage (AAAA-MM-JJ): ");
+                if (dateRetour <= dateAller)
+                {
+                    ConsoleHelper.AfficherMessageErreur("La date de fin doit être postèrieur à la date de début, retour au menu");
+                    return;
+                }
+                voyage.DateAller = dateAller;
+                voyage.DateRetour = dateRetour;
+                voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Choisissez le nombre de places disponibles");
+                voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Choisissez un tarif TTC par participant");
+
+                bd.Voyages.Add(voyage);
+                bd.SaveChanges();
+
             }
         }
 
