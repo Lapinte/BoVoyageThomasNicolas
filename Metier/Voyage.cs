@@ -19,11 +19,8 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 
         public decimal TarifToutCompris { get; set; }
 
-        
         [ForeignKey("IdDestination")]
         public virtual Destination Destination { get; set; }
-
-        [Column("id_Destination")]
         public int IdDestination { get; set; }
         
     }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage_Thomas_Nicolas.Metier
 {
+    [Table("Reservations")]
     public class DossierReservation
     {
         public int Id { get; set; }
@@ -17,13 +18,18 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 
         public int EtatDossierReservation { get; set; }
 
+        [ForeignKey("IdVoyage")]
         public Voyage Voyage { get; set; }
+        public int IdVoyage { get; set; }
 
-        
+        [ForeignKey("IdClient")]
         public Client Client { get; set; }
-        
+        public int IdClient { get; set; }
 
-        public Participant Participant { get; set; }
+        //[ForeignKey("IdParticipant")]
+        //public Participant Participant { get; set; }
+        //public int IdParticipant { get; set; }
+    
 
     }
 }

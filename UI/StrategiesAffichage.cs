@@ -23,5 +23,20 @@ namespace BoVoyage_Thomas_Nicolas.UI
             };
             return strategieAffichageDestinations;
         }
+
+        public static List<InformationAffichage> GetStrategieVoyage()
+        {
+            List<InformationAffichage> strategieAffichageVoyages =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Voyage>(x=>x.Destination, "Destination", 20),
+                InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 15),
+                InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 15),
+                InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlacesDisponibles", 20),
+                InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "Tarif TTC par personne", 25),
+            };
+            return strategieAffichageVoyages;
+        }
     }
 }
