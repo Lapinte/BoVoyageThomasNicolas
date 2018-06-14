@@ -8,20 +8,20 @@ using BoVoyage.Framework.UI;
 
 namespace BoVoyage_Thomas_Nicolas.UI
 {
-    public class ModuleGestionAgences
+    public class ModuleGestionDossiers
     {
         // On définit ici les propriétés qu'on veut afficher
         //  et la manière de les afficher
         private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<AgenceVoyage>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<AgenceVoyage>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.EtatDossierReservation, "Etat", 15),
             };
 
         private Menu menu;
 
-        public ModuleGestionAgences(Application application)
+        public ModuleGestionDossiers(Application application)
         {
             this.Application = application;
         }
@@ -30,18 +30,18 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void InitialiserMenu()
         {
-            this.menu = new Menu("Gestion des Agences de Voyage");
-            this.menu.AjouterElement(new ElementMenu("1", "Afficher les Agences")
+            this.menu = new Menu("Gestion des Dossiers");
+            this.menu.AjouterElement(new ElementMenu("1", "Afficher les Dossiers")
             {
-                FonctionAExecuter = this.AfficherAgences
+                FonctionAExecuter = this.AfficherDossiers
             });
-            this.menu.AjouterElement(new ElementMenu("2", "Ajouter une Agence")
+            this.menu.AjouterElement(new ElementMenu("2", "Ajouter un Dossier")
             {
-                FonctionAExecuter = this.AjouterAgence
+                FonctionAExecuter = this.AjouterDossier
             });
-            this.menu.AjouterElement(new ElementMenu("3", "Supprimer une Agence")
+            this.menu.AjouterElement(new ElementMenu("3", "Supprimer un Dossier")
             {
-                FonctionAExecuter = this.SupprimerAgence
+                FonctionAExecuter = this.SupprimerDossier
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal..."));
         }
@@ -56,23 +56,23 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menu.Afficher();
         }
 
-        private void AfficherAgences()
+        private void AfficherDossiers()
         {
-            ConsoleHelper.AfficherEntete("Agences");
+            ConsoleHelper.AfficherEntete("Dossiers");
 
             Console.WriteLine("TO DO");
         }
 
-        private void AjouterAgence()
+        private void AjouterDossier()
         {
-            ConsoleHelper.AfficherEntete("Ajouter une Agence");
+            ConsoleHelper.AfficherEntete("Ajouter un Dossier");
 
             Console.WriteLine("TO DO");
         }
 
-        private void SupprimerAgence()
+        private void SupprimerDossier()
         {
-            ConsoleHelper.AfficherEntete("Supprimer une Agence");
+            ConsoleHelper.AfficherEntete("Supprimer un Dossier");
 
             Console.WriteLine("TO DO");
         }
