@@ -15,5 +15,12 @@ namespace BoVoyage_Thomas_Nicolas.Metier
         public decimal PrixTotal { get; set; }
 
         public int EtatDossierReservation { get; set; }
+
+        public Voyage Voyage { get; set; }
+
+        public Client Client { get; set; }
+
+        public Participant Participant { get; set; }
+
     }
 }

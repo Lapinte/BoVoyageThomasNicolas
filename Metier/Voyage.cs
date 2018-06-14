@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 
         public decimal TarifToutCompris { get; set; }
 
+        [Column("id_Destination")]
+        [ForeignKey("id_Destination")]
         public Destination Destination { get; set; }
     }
 }

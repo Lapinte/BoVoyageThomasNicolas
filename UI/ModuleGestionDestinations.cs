@@ -12,11 +12,14 @@ namespace BoVoyage_Thomas_Nicolas.UI
     {
         // On définit ici les propriétés qu'on veut afficher
         //  et la manière de les afficher
-        private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
+        public static readonly List<InformationAffichage> strategieAffichageDestinations =
             new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Destination>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Destination>(x=>x.Pays, "Pays", 20),
+                InformationAffichage.Creer<Destination>(x=>x.Continent, "Continent", 20),
+                InformationAffichage.Creer<Destination>(x=>x.Pays, "Pays", 15),
+                InformationAffichage.Creer<Destination>(x=>x.Region, "Région", 15),
+                InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 80),
             };
 
         private Menu menu;

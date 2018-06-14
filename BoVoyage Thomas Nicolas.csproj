@@ -62,10 +62,7 @@
     <Compile Include="Metier\Description.cs" />
     <Compile Include="Metier\DossierReservation.cs" />
     <Compile Include="Metier\Participant.cs" />
-    <Compile Include="Metier\Pays.cs" />
     <Compile Include="Metier\Personne.cs" />
-    <Compile Include="Metier\Region.cs" />
-    <Compile Include="Metier\Continent.cs" />
     <Compile Include="Metier\Destination.cs" />
     <Compile Include="Metier\Voyage.cs" />
     <Compile Include="Program.cs" />
@@ -76,6 +73,7 @@
     <Compile Include="UI\ModuleGestionAgences.cs" />
     <Compile Include="UI\ModuleGestionDossiers.cs" />
     <Compile Include="UI\ModuleGestionVoyages.cs" />
+    <Compile Include="UI\StrategiesAffichage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

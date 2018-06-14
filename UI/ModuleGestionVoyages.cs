@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using BoVoyage_Thomas_Nicolas.Metier;
 using BoVoyage.Framework.UI;
 
+
 namespace BoVoyage_Thomas_Nicolas.UI
 {
     public class ModuleGestionVoyages
     {
         // On définit ici les propriétés qu'on veut afficher
         //  et la manière de les afficher
-        private static readonly List<InformationAffichage> strategieAffichageEntitesMetier =
+        private static readonly List<InformationAffichage> strategieAffichageVoyages =
             new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
@@ -67,7 +68,20 @@ namespace BoVoyage_Thomas_Nicolas.UI
         {
             ConsoleHelper.AfficherEntete("Ajouter un voyage");
 
-            Console.WriteLine("TO DO");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var Voyage = new Voyage();
+
+                var listeDestination = bd.Destinations.ToList();
+                ConsoleHelper.AfficherListe(listeDestination, StrategiesAffichage.GetStrategieDestination());
+
+                var idDestination = ConsoleSaisie.SaisirEntierObligatoire("Choisissez une destination (ID) : ");
+                if (!bd.Destinations.Any(x => x.Id == idDestination))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Cette Destination n'existe pas, retour au menu");
+                    return;
+                }
+            }
         }
 
         private void SupprimerVoyage()

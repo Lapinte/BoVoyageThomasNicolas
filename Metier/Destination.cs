@@ -10,12 +10,12 @@ namespace BoVoyage_Thomas_Nicolas.Metier
     {
         public int Id { get; set; }
 
-        public Continent Continent { get; set; }
+        public string Continent { get; set; }
 
-        public Pays Pays { get; set; }
+        public string Pays { get; set; }
 
-        public Region Region { get; set; }
+        public string Region { get; set; }
 
-        public Description Description { get; set; }
+        public string Description { get; set; }
     }
 }
