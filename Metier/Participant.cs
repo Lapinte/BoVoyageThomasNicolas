@@ -12,5 +12,10 @@ namespace BoVoyage_Thomas_Nicolas.Metier
         [ForeignKey("IdReservation")]
         public virtual DossierReservation DossierReservation { get; set; }
         public int IdReservation { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Nom}";
+        }
     }
 }

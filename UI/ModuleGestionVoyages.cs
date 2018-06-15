@@ -80,9 +80,10 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 var voyage = new Voyage();
 
+
+                //choix destination
                 var listeDestination = bd.Destinations.ToList();
                 ConsoleHelper.AfficherListe(listeDestination, StrategiesAffichage.GetStrategieDestination());
-
                 var idDestination = ConsoleSaisie.SaisirEntierObligatoire("Choisissez une destination (ID) : ");
                 if (!bd.Destinations.Any(x => x.Id == idDestination))
                 {
@@ -90,6 +91,17 @@ namespace BoVoyage_Thomas_Nicolas.UI
                     return;
                 }
                 voyage.Destination = bd.Destinations.Single(x => x.Id == idDestination);
+
+                //choix d'une agence
+                var listeAgence = bd.Agences.ToList();
+                ConsoleHelper.AfficherListe(listeAgence, StrategiesAffichage.GetStrategieAgence());
+                var idAgence = ConsoleSaisie.SaisirEntierObligatoire("Choisissez une Agence (ID) : ");
+                if (!bd.Agences.Any(x => x.Id == idAgence))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Cette Agence n'existe pas, retour au menu");
+                    return;
+                }
+                voyage.Agence = bd.Agences.Single(x => x.Id == idAgence);
 
                 var dateAller = ConsoleSaisie.SaisirDateObligatoire("Choisissez la date de début du Voyage (AAAA-MM-JJ): ");
                 var dateRetour = ConsoleSaisie.SaisirDateObligatoire("Choisissez la date de fin du Voyage (AAAA-MM-JJ): ");

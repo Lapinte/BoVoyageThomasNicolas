@@ -10,7 +10,6 @@ namespace BoVoyage_Thomas_Nicolas.Metier
     [Table("Agences")]
     public class AgenceVoyage
     {
-        [Column("id_Agence")]
         public int Id { get; set; }
 
         public string Nom { get; set; }

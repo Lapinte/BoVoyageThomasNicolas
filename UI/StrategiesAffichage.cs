@@ -24,6 +24,17 @@ namespace BoVoyage_Thomas_Nicolas.UI
             return strategieAffichageDestinations;
         }
 
+        public static List<InformationAffichage> GetStrategieAgence()
+        {
+            List<InformationAffichage> strategieAffichageAgences =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<AgenceVoyage>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<AgenceVoyage>(x=>x.Nom, "Nom", 30)
+            };
+            return strategieAffichageAgences;
+        }
+
         public static List<InformationAffichage> GetStrategieVoyage()
         {
             List<InformationAffichage> strategieAffichageVoyages =
