@@ -22,6 +22,9 @@ namespace BoVoyage_Thomas_Nicolas.Metier
         [ForeignKey("IdDestination")]
         public virtual Destination Destination { get; set; }
         public int IdDestination { get; set; }
-        
+
+        [ForeignKey("IdAgence")]
+        public virtual AgenceVoyage Agence { get; set; }
+        public int IdAgence { get; set; }
     }
 }
