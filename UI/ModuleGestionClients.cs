@@ -20,7 +20,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private Application Application { get; }
 
-        private void InitialiserMenu()
+        public void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des Clients");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les Clients")
@@ -60,7 +60,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menu.Afficher();
         }
 
-        private void AfficherClients()
+        public static void AfficherClients()
         {
             ConsoleHelper.AfficherEntete("Clients");
 
@@ -132,8 +132,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieClient());
             }
         }
-
-
 
         private void RechercherParticipant()
         {

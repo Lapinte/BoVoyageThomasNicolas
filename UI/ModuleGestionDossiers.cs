@@ -71,27 +71,25 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 var dossier = new DossierReservation();
 
-                var listeVoyages = bd.Voyages.ToList();
-                ConsoleHelper.AfficherListe(listeVoyages, StrategiesAffichage.GetStrategieVoyage());
-
+                //Choix d'un voyage
+                ModuleGestionVoyages.AfficherVoyages();
                 var idVoyage = ConsoleSaisie.SaisirEntierObligatoire("Choisissez un Voyage (ID) : ");
                 if (!bd.Voyages.Any(x => x.Id == idVoyage))
                 {
                     ConsoleHelper.AfficherMessageErreur("Ce Voyage n'existe pas, retour au menu");
                     return;
                 }
-
                 dossier.Voyage = bd.Voyages.Single(x => x.Id == idVoyage);
 
-                var listeClients = Application.GetBaseDonnees().Clients.ToList();
-                ConsoleHelper.AfficherListe(listeClients, StrategiesAffichage.GetStrategieClient());
+                //Choix d'un client
+                ModuleGestionClients.AfficherClients();
                 var idClient = ConsoleSaisie.SaisirEntierObligatoire("Choisissez un Client (ID) : ");
                 if (!bd.Clients.Any(x => x.Id == idClient))
                 {
                     ConsoleHelper.AfficherMessageErreur("Ce Client n'existe pas, retour au menu");
                     return;
                 }
-
+                dossier.Client = bd.Clients.Single(x => x.Id == idClient);
             }
         }
 
