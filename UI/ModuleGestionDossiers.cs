@@ -43,6 +43,10 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 FonctionAExecuter = this.SupprimerDossier
             });
+            this.menu.AjouterElement(new ElementMenu("4", "Modifier le statut d'un Dossier")
+            {
+                FonctionAExecuter = this.ModifierStatutDossier
+            });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal..."));
         }
 
@@ -58,9 +62,14 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void AfficherDossiers()
         {
-            ConsoleHelper.AfficherEntete("Dossiers");
+            ConsoleHelper.AfficherEntete("Dossiers existants");
 
-            Console.WriteLine("TO DO");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var listeDossiers = bd.DossierReservations.ToList();
+                ConsoleHelper.AfficherListe(listeDossiers, StrategiesAffichage.GetStrategieDossier());
+            }
+
         }
 
         private void AjouterDossier()
@@ -155,9 +164,34 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         private void SupprimerDossier()
         {
-            ConsoleHelper.AfficherEntete("Supprimer un Dossier");
+            ConsoleHelper.AfficherEntete("Supprimer un Dossier:");
 
-            Console.WriteLine("TO DO");
+            AfficherDossiers();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var dossier = bd.DossierReservations.Single(x => x.Id == id);
+                bd.DossierReservations.Remove(dossier);
+                bd.SaveChanges();
+            }
+        }
+        private void ModifierStatutDossier()
+        {
+            ConsoleHelper.AfficherEntete("Modifier un Dossier:");
+
+            AfficherDossiers();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à modifier : ");
+            
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var dossier = bd.DossierReservations.Single(x => x.Id == id);
+                string nouveauStatut = ConsoleSaisie.SaisirChaineObligatoire("Saisir un nouveau statut:");
+
+                dossier.EtatDossierReservation = nouveauStatut;
+
+                bd.DossierReservations.Add(dossier);
+                bd.SaveChanges();
+            }
         }
     }
 }
