@@ -61,7 +61,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menu.Afficher();
         }
 
-        public static void AfficherVoyages()
+        public void AfficherVoyages()
         {
             ConsoleHelper.AfficherEntete("Voyages disponibles");
 
