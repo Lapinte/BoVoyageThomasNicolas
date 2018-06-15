@@ -123,7 +123,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             }
         }
 
-        private void AfficherDestinations()//TODO:copie de méthode depuis ModuleGestionDestination
+        private void AfficherDestinations()
         {
             ConsoleHelper.AfficherEntete("Destinations disponibles");
 
@@ -133,37 +133,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 ConsoleHelper.AfficherListe(listeDestinations, StrategiesAffichage.GetStrategieDestination());
             }
 
-        }
-
-        //private void RechercherVoyage()
-        //{
-        //    ConsoleHelper.AfficherEntete("Voyages disponibles pour ce pays");
-
-        //    AfficherDestinations();
-
-            var listeVoyages = from Voyage where 
-
-            //var saisieVoyage = ConsoleSaisie.SaisirChaineObligatoire("Entrez le nom d'un Pays (ou une partie) : ");
-
-            //            using (var bd = Application.GetBaseDonnees())
-            //            {
-
-
-            //                //var agence = bd.Agences.Single(x => x.Id == id);
-
-            //                // context = new bd();
-            //                //var produitRecherche = from Produit in context.Produit
-            //                //                       where Produit.Nom == saisie//.StartsWith()
-            //                //                       select Produit;
-
-            //                var destination = bd.Destinations.Where(x => x.Pays.Contains(saisieVoyage)).ToList();
-
-            //                var voyage = bd.Voyages.Where(x => x.IdDestination == destination.Id);
-            //                //var liste = bd.Voyages where (bd.Destinations(x=> x.Pays.Contains(saisieVoyage).ToList()));
-
-            ////var liste = bd.Voyages.Where(x => x.Pays.Contains(saisieVoyage)).ToList();
-            //ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieVoyage());
-        //}
         }
     }
 }

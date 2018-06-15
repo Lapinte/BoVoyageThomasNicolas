@@ -12,11 +12,11 @@ namespace BoVoyage_Thomas_Nicolas.Metier
     {
         public int Id { get; set; }
 
-        public string NumeroCarteBancaire { get; set; }
+        public int NumeroCarteBancaire { get; set; }
 
         public decimal PrixTotal { get; set; }
 
-        public int EtatDossierReservation { get; set; }
+        public string EtatDossierReservation { get; set; }
 
         [ForeignKey("IdVoyage")]
         public Voyage Voyage { get; set; }
@@ -25,6 +25,8 @@ namespace BoVoyage_Thomas_Nicolas.Metier
         [ForeignKey("IdClient")]
         public Client Client { get; set; }
         public int IdClient { get; set; }
+
+        public virtual ICollection<Participant> Participants { get; set; }
 
         public bool AssuranceAnnulation { get; set; }
 

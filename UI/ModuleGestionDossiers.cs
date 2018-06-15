@@ -90,6 +90,66 @@ namespace BoVoyage_Thomas_Nicolas.UI
                     return;
                 }
                 dossier.Client = bd.Clients.Single(x => x.Id == idClient);
+
+                //Demande numéro carte bancaire
+                dossier.NumeroCarteBancaire = ConsoleSaisie.SaisirEntierObligatoire("Entrez votre numéro de carte bancaire : ");
+
+                //Demande d'une assurance annulation
+                var annulation = ConsoleSaisie.SaisirEntierObligatoire("Voulez-vous une assurance annulation? (200€) 1=Oui 2=Non : ");
+                if (annulation != 1 && annulation != 2)
+                {
+                    ConsoleHelper.AfficherMessageErreur("Choix impossible, retour au menu");
+                    return;
+                }
+                if (annulation == 1)
+                {
+                    dossier.AssuranceAnnulation = true;
+                }
+                else
+                {
+                    dossier.AssuranceAnnulation = false;
+                }
+
+                //Création d'une liste de participants 
+                var listeParticipants = new List<Participant>();
+
+                //Conditions de sortie de la boucle d'ajout de participant
+                var ajoutOuiOuNon = ConsoleSaisie.SaisirEntierObligatoire("Ajouter un participant ? 1=Oui  2=Non");
+                while (listeParticipants.Count() < 9 && ajoutOuiOuNon == 1)
+                {
+                    //Ajout d'un participant à la liste
+                    if (ajoutOuiOuNon != 1 && ajoutOuiOuNon != 2)
+                    {
+                        ConsoleHelper.AfficherMessageErreur("Choix impossible, retour au menu");
+                        return;
+                    }
+                    Participant participant = this.Application.ModuleGestionClients.AjouterParticipant();
+                    participant.IdReservation = dossier.Id;
+                    listeParticipants.Add(participant);
+                    bd.Participants.Add(participant);
+                    ajoutOuiOuNon = ConsoleSaisie.SaisirEntierObligatoire("Ajouter un participant ? 1=Oui  2=Non");
+
+                }
+                dossier.Participants = listeParticipants;
+
+                //Création du statut en attente
+                dossier.EtatDossierReservation = "En attente";
+
+                //Calcul du prix total avec prise en compte de l'assurance annulation et de l'age des participants
+                var tarif = dossier.Voyage.TarifToutCompris;
+                decimal nbAdultes = dossier.Participants.Count(x => x.Age > 12);
+                decimal nbEnfants = dossier.Participants.Count(x => x.Age <= 12);
+                if (dossier.AssuranceAnnulation == true)
+                {
+                    dossier.PrixTotal = (tarif * (nbAdultes + (nbEnfants * 0.6M))) + 200;
+                }
+                else
+                {
+                    dossier.PrixTotal = tarif * (nbAdultes + (nbEnfants * 0.6M));
+                }
+
+                bd.DossierReservations.Add(dossier);
+                bd.SaveChanges();
             }
         }
 

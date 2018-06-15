@@ -8,6 +8,20 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 {
     public class Participant : Personne
     {
-        public decimal Reduction { get; set; }
+        public bool Reduction
+        {
+            get
+            {
+                if (Age <= 12)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public int IdReservation { get; set; }
     }
 }

@@ -66,7 +66,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
             using (var bd = Application.GetBaseDonnees())
             {
-                var liste = Application.GetBaseDonnees().Clients.ToList();
+                var liste = bd.Clients.ToList();
                 ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieClient());
             }
         }
@@ -104,6 +104,24 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 bd.Clients.Add(client);
                 bd.SaveChanges();
             }
+        }
+
+        public Participant AjouterParticipant()
+        {
+            ConsoleHelper.AfficherEntete("Ajouter un participant");
+            
+                var participant = new Participant
+                {
+                    Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
+                    Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+                    Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
+                    Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+                    Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : "),
+                    DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
+                };
+                
+                return participant;
+            
         }
 
         private void SupprimerClient()
