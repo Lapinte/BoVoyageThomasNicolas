@@ -81,7 +81,7 @@
     <Folder Include="TimePeriod\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\script_bdd_BoVoyageV5.sql" />
+    <Content Include="DAL\script_bdd_BoVoyageV6.sql" />
     <Content Include="_Lib\BoVoyage.Framework.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

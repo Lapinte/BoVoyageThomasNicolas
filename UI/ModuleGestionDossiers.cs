@@ -189,7 +189,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
                 dossier.EtatDossierReservation = nouveauStatut;
 
-                bd.DossierReservations.Add(dossier);
                 bd.SaveChanges();
             }
         }

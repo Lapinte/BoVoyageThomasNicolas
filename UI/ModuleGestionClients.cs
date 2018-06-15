@@ -37,7 +37,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             });
             this.menu.AjouterElement(new ElementMenu("4", "Rechercher un Participant")
             {
-                FonctionAExecuter = this.RechercherClient
+                FonctionAExecuter = this.RechercherParticipant
             });
             this.menu.AjouterElement(new ElementMenu("5", "Ajouter un Client")
             {

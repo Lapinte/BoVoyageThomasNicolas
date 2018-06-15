@@ -19,11 +19,11 @@ namespace BoVoyage_Thomas_Nicolas.Metier
         public string EtatDossierReservation { get; set; }
 
         [ForeignKey("IdVoyage")]
-        public Voyage Voyage { get; set; }
+        public virtual Voyage Voyage { get; set; }
         public int IdVoyage { get; set; }
 
         [ForeignKey("IdClient")]
-        public Client Client { get; set; }
+        public virtual Client Client { get; set; }
         public int IdClient { get; set; }
 
         public virtual ICollection<Participant> Participants { get; set; }
