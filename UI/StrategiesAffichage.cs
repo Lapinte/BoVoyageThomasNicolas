@@ -71,5 +71,25 @@ namespace BoVoyage_Thomas_Nicolas.UI
             };
             return strategieAffichageParticipants;
         }
+
+        public static List<InformationAffichage> GetStrategieDossier()
+        {
+            List<InformationAffichage> strategieAffichageParticipants =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "CB", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.PrixTotal, "Prix", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.EtatDossierReservation, "Etat Dossier Réservation", 10),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Voyage, "Voyage", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "Id_Voyage", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Client, "Client", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.IdClient, "Id_Client", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Participants, "Participants", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.AssuranceAnnulation, "Assurance Annulation", 20),
+
+            };
+            return strategieAffichageParticipants;
+        }
     }
 }
