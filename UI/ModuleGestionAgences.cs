@@ -87,10 +87,15 @@ namespace BoVoyage_Thomas_Nicolas.UI
             var liste = Application.GetBaseDonnees().Agences.ToList();
             ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
 
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            var idAgence = ConsoleSaisie.SaisirEntierObligatoire("Agence à supprimer (Id) : ");
             using (var bd = Application.GetBaseDonnees())
             {
-                var agence = bd.Agences.Single(x => x.Id == id);
+                if (!bd.Agences.Any(x => x.Id == idAgence))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Cette agence n'existe pas, retour au menu");
+                    return;
+                }
+                var agence = bd.Agences.Single(x => x.Id == idAgence);
                 bd.Agences.Remove(agence);
                 bd.SaveChanges();
             }

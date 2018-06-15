@@ -42,9 +42,9 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Voyage>(x=>x.Destination, "Destination", 20),
-                InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 15),
-                InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 15),
-                InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlacesDisponibles", 20),
+                InformationAffichage.Creer<Voyage>(x=>x.DateAller, "Date Aller", 15),
+                InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "Date Retour", 15),
+                InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "Places Disponibles", 20),
                 InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "Tarif TTC par personne", 25)
             };
             return strategieAffichageVoyages;
@@ -85,17 +85,18 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         public static List<InformationAffichage> GetStrategieDossier()
         {
-            List<InformationAffichage> strategieAffichageParticipants =
-            new List<InformationAffichage>
-            {
+                List<InformationAffichage> strategieAffichageParticipants =
+                new List<InformationAffichage>
+                {
                 InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.EtatDossierReservation, "Etat Dossier Réservation", 10),
                 InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "Id_Voyage", 20),
-                InformationAffichage.Creer<Client>(x=>x.Nom, "Id_Client", 20),//TODO afficher nom du client
+                InformationAffichage.Creer<DossierReservation>(x=>x.Client.Nom, "Client", 20),
                 InformationAffichage.Creer<DossierReservation>(x=>x.AssuranceAnnulation, "Assurance Annulation", 20),
+                InformationAffichage.Creer<DossierReservation>(x=>x.PrixTotal, "Prix TTC", 20),
 
-            };
-            return strategieAffichageParticipants;
+                };
+                return strategieAffichageParticipants;
         }
     }
 }

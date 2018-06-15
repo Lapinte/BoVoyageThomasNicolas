@@ -30,9 +30,7 @@ namespace BoVoyage_Thomas_Nicolas.Metier
 
         public bool AssuranceAnnulation { get; set; }
 
-        //[ForeignKey("IdParticipant")]
-        //public Participant Participant { get; set; }
-        //public int IdParticipant { get; set; }
+    
     
 
     }

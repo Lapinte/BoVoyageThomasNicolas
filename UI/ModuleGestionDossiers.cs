@@ -167,10 +167,15 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Supprimer un Dossier:");
 
             AfficherDossiers();
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            var idDossier = ConsoleSaisie.SaisirEntierObligatoire("Dossier à supprimer (Id): ");
             using (var bd = Application.GetBaseDonnees())
             {
-                var dossier = bd.DossierReservations.Single(x => x.Id == id);
+                if (!bd.DossierReservations.Any(x => x.Id == idDossier))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Ce Dossier n'existe pas, retour au menu");
+                    return;
+                }
+                var dossier = bd.DossierReservations.Single(x => x.Id == idDossier);
                 bd.DossierReservations.Remove(dossier);
                 bd.SaveChanges();
             }

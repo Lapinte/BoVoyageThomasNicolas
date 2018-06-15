@@ -129,10 +129,15 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Supprimer un Client");
 
             RechercherClient();
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            var idClient = ConsoleSaisie.SaisirEntierObligatoire("Client à supprimer (Id) ");
             using (var bd = Application.GetBaseDonnees())
             {
-                var client = bd.Clients.Single(x => x.Id == id);
+                if (!bd.Clients.Any(x => x.Id == idClient))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Ce Client n'existe pas, retour au menu");
+                    return;
+                }
+                var client = bd.Clients.Single(x => x.Id == idClient);
                 bd.Clients.Remove(client);
                 bd.SaveChanges();
             }

@@ -98,10 +98,15 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Supprimer une Destination");
 
             AfficherDestinations();
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            var idDestination = ConsoleSaisie.SaisirEntierObligatoire("Destination à supprimer (Id) : ");
             using (var bd = Application.GetBaseDonnees())
             {
-                var destination = bd.Destinations.Single(x => x.Id == id);
+                if (!bd.Destinations.Any(x => x.Id == idDestination))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Cette Destination n'existe pas, retour au menu");
+                    return;
+                }
+                var destination = bd.Destinations.Single(x => x.Id == idDestination);
                 bd.Destinations.Remove(destination);
                 bd.SaveChanges();
             }

@@ -126,10 +126,16 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherEntete("Supprimer un Voyage");
 
             AfficherVoyages();
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            var idVoyage = ConsoleSaisie.SaisirEntierObligatoire("Voyage à supprimer (Id): ");
+            
             using (var bd = Application.GetBaseDonnees())
             {
-                var voyage = bd.Voyages.Single(x => x.Id == id);
+                if (!bd.Voyages.Any(x => x.Id == idVoyage))
+                {
+                    ConsoleHelper.AfficherMessageErreur("Ce Voyage n'existe pas, retour au menu");
+                    return;
+                }
+                var voyage = bd.Voyages.Single(x => x.Id == idVoyage);
                 bd.Voyages.Remove(voyage);
                 bd.SaveChanges();
             }
