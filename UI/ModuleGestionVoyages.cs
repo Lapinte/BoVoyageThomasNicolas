@@ -36,10 +36,10 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 FonctionAExecuter = this.AfficherVoyages
             });
-            //this.menu.AjouterElement(new ElementMenu("2", "Rechercher les Voyages disponibles par pays")
-            //{
-            //    FonctionAExecuter = this.RechercherVoyage
-            //});
+            this.menu.AjouterElement(new ElementMenu("2", "Rechercher les Voyages disponibles par pays")
+            {
+                FonctionAExecuter = this.RechercherVoyage
+            });
             this.menu.AjouterElement(new ElementMenu("3", "Ajouter un nouveau Voyage")
             {
                 FonctionAExecuter = this.AjouterVoyage
@@ -133,6 +133,25 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 ConsoleHelper.AfficherListe(listeDestinations, StrategiesAffichage.GetStrategieDestination());
             }
 
+        }
+
+        private void RechercherVoyage()
+        {
+            ConsoleHelper.AfficherEntete("Voyages disponibles pour ce pays");
+
+            AfficherDestinations();
+
+            //var listeVoyages = from Voyage where 
+
+            var saisieVoyage = ConsoleSaisie.SaisirChaineObligatoire("Entrez le nom d'un Pays (ou une partie) : ");
+
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var voyages = bd.Voyages.Where(x => x.Destination.Pays.Contains(saisieVoyage)).ToList();
+
+                ConsoleHelper.AfficherListe(voyages, StrategiesAffichage.GetStrategieVoyage());
+
+            }
         }
     }
 }
