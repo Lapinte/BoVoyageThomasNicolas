@@ -60,7 +60,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menu.Afficher();
         }
 
-        public static void AfficherClients()
+        public void AfficherClients()
         {
             ConsoleHelper.AfficherEntete("Clients");
 

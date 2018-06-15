@@ -13,16 +13,18 @@ namespace BoVoyage_Thomas_Nicolas.UI
     public class Application
     {
         private Menu menuPrincipal;
-        private ModuleGestionVoyages moduleGestionVoyages;
-        private ModuleGestionClients moduleGestionClients;
+
         private ModuleGestionDestinations moduleGestionDestinations;
         private ModuleGestionAgences moduleGestionAgences;
         private ModuleGestionDossiers moduleGestionDossiers;
 
+        public ModuleGestionClients ModuleGestionClients { get; set; }
+        public ModuleGestionVoyages ModuleGestionVoyages { get; set; }
+
         private void InitialiserModules()
         {
-            this.moduleGestionVoyages = new ModuleGestionVoyages(this);
-            this.moduleGestionClients = new ModuleGestionClients(this);
+            this.ModuleGestionVoyages = new ModuleGestionVoyages(this);
+            this.ModuleGestionClients = new ModuleGestionClients(this);
             this.moduleGestionDestinations = new ModuleGestionDestinations(this);
             this.moduleGestionAgences = new ModuleGestionAgences(this);
             this.moduleGestionDossiers = new ModuleGestionDossiers(this);
@@ -34,12 +36,12 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menuPrincipal.AjouterElement(new ElementMenu("1", "Gestion des Voyages")
             {
                 AfficherLigneRetourMenuApresExecution = false,
-                FonctionAExecuter = this.moduleGestionVoyages.Demarrer
+                FonctionAExecuter = this.ModuleGestionVoyages.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des Clients")
             {
                 AfficherLigneRetourMenuApresExecution = false,
-                FonctionAExecuter = this.moduleGestionClients.Demarrer
+                FonctionAExecuter = this.ModuleGestionClients.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion des Destinations")
             {

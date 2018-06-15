@@ -72,7 +72,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 var dossier = new DossierReservation();
 
                 //Choix d'un voyage
-                ModuleGestionVoyages.AfficherVoyages();
+                this.Application.ModuleGestionVoyages.AfficherVoyages();
                 var idVoyage = ConsoleSaisie.SaisirEntierObligatoire("Choisissez un Voyage (ID) : ");
                 if (!bd.Voyages.Any(x => x.Id == idVoyage))
                 {
@@ -82,7 +82,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
                 dossier.Voyage = bd.Voyages.Single(x => x.Id == idVoyage);
 
                 //Choix d'un client
-                ModuleGestionClients.AfficherClients();
+                this.Application.ModuleGestionClients.AfficherClients();
                 var idClient = ConsoleSaisie.SaisirEntierObligatoire("Choisissez un Client (ID) : ");
                 if (!bd.Clients.Any(x => x.Id == idClient))
                 {
