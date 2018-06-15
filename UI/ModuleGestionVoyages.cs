@@ -36,10 +36,10 @@ namespace BoVoyage_Thomas_Nicolas.UI
             {
                 FonctionAExecuter = this.AfficherVoyages
             });
-            //this.menu.AjouterElement(new ElementMenu("2", "Rechercher les Voyages disponibles par pays")
-            //{
-            //    FonctionAExecuter = this.RechercherVoyage
-            //});
+            this.menu.AjouterElement(new ElementMenu("2", "Rechercher les Voyages disponibles par pays")
+            {
+                FonctionAExecuter = this.RechercherVoyage
+            });
             this.menu.AjouterElement(new ElementMenu("3", "Ajouter un nouveau Voyage")
             {
                 FonctionAExecuter = this.AjouterVoyage
@@ -61,7 +61,7 @@ namespace BoVoyage_Thomas_Nicolas.UI
             this.menu.Afficher();
         }
 
-        public static void AfficherVoyages()
+        public void AfficherVoyages()
         {
             ConsoleHelper.AfficherEntete("Voyages disponibles");
 
@@ -135,35 +135,23 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
         }
 
-        //private void RechercherVoyage()
-        //{
-        //    ConsoleHelper.AfficherEntete("Voyages disponibles pour ce pays");
+        private void RechercherVoyage()
+        {
+            ConsoleHelper.AfficherEntete("Voyages disponibles pour ce pays");
 
-        //    AfficherDestinations();
+            AfficherDestinations();
 
-            var listeVoyages = from Voyage where 
+            //var listeVoyages = from Voyage where 
 
-            //var saisieVoyage = ConsoleSaisie.SaisirChaineObligatoire("Entrez le nom d'un Pays (ou une partie) : ");
+            var saisieVoyage = ConsoleSaisie.SaisirChaineObligatoire("Entrez le nom d'un Pays (ou une partie) : ");
 
-            //            using (var bd = Application.GetBaseDonnees())
-            //            {
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var voyages = bd.Voyages.Where(x => x.Destination.Pays.Contains(saisieVoyage)).ToList();
 
+                ConsoleHelper.AfficherListe(voyages, StrategiesAffichage.GetStrategieVoyage());
 
-            //                //var agence = bd.Agences.Single(x => x.Id == id);
-
-            //                // context = new bd();
-            //                //var produitRecherche = from Produit in context.Produit
-            //                //                       where Produit.Nom == saisie//.StartsWith()
-            //                //                       select Produit;
-
-            //                var destination = bd.Destinations.Where(x => x.Pays.Contains(saisieVoyage)).ToList();
-
-            //                var voyage = bd.Voyages.Where(x => x.IdDestination == destination.Id);
-            //                //var liste = bd.Voyages where (bd.Destinations(x=> x.Pays.Contains(saisieVoyage).ToList()));
-
-            ////var liste = bd.Voyages.Where(x => x.Pays.Contains(saisieVoyage)).ToList();
-            //ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieVoyage());
-        //}
+            }
         }
     }
 }
