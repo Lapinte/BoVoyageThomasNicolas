@@ -89,8 +89,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
 
             using (var bd = Application.GetBaseDonnees())
             {
-                var dateDuJour = DateTime.Now;
-                var dateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : ");
                 var client = new Client
                 {
                     Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilité : "),
@@ -98,51 +96,12 @@ namespace BoVoyage_Thomas_Nicolas.UI
                     Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom : "),
                     Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
                     Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone : "),
-                    DateNaissance = dateNaissance,
+                    DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
                     Email = ConsoleSaisie.SaisirChaineObligatoire("Email : "),
-                    Age = dateDuJour.Date - dateNaissance.Date,
 
                 };
 
-
-                bd.Agences.Add(client);
-                bd.SaveChanges();
-            }
-
-
-            Console.WriteLine("Civilité:");
-            var Civilite = Console.ReadLine();
-            Console.WriteLine("Nom:");
-            var Nom = Console.ReadLine();
-            Console.WriteLine("Prenom:");
-            var Prenom = Console.ReadLine();
-            Console.WriteLine("Adresse:");
-            var Adresse = Console.ReadLine();
-            Console.WriteLine("Telephone");
-            var Telephone = Console.ReadLine();
-            Console.WriteLine("Date de naissance:");
-            var DateNaissance = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Email");
-            var Email = Console.ReadLine();
-            var Age = 20;
-            //Avec Entity Framework
-            Client nouveauClient = new Client
-            {
-                Nom = Nom,
-                Civilite = Civilite,
-                Prenom = Prenom,
-                Adresse = Adresse,
-                Telephone = Telephone,
-                Email = Email,
-                DateNaissance = DateNaissance,
-                Age = Age
-
-                //TODO : Calculer Age
-            };
-
-            using (var bd = Application.GetBaseDonnees())
-            {
-                bd.Clients.Add(nouveauClient);
+                bd.Clients.Add(client);
                 bd.SaveChanges();
             }
         }
@@ -151,8 +110,6 @@ namespace BoVoyage_Thomas_Nicolas.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer un Client");
 
-            //var liste = Application.GetBaseDonnees().Clients.ToList();
-            //ConsoleHelper.AfficherListe(liste, strategieAffichageEntitesMetier);
             RechercherClient();
             var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
             using (var bd = Application.GetBaseDonnees())
