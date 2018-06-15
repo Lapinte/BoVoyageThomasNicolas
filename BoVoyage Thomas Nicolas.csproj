@@ -79,7 +79,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TimePeriod\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\Script_Generation_Bdd.txt" />
     <Content Include="_Lib\BoVoyage.Framework.dll" />
