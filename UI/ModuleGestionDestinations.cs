@@ -63,21 +63,48 @@ namespace BoVoyage_Thomas_Nicolas.UI
         {
             ConsoleHelper.AfficherEntete("Destinations disponibles");
 
-            Console.WriteLine("TO DO");
+                using (var bd = Application.GetBaseDonnees())
+                {
+                    var listeDestinations = bd.Destinations.ToList();
+                    ConsoleHelper.AfficherListe(listeDestinations, StrategiesAffichage.GetStrategieDestination());
+                }
+           
         }
 
         private void AjouterDestination()
         {
-            ConsoleHelper.AfficherEntete("Ajouter une Destination");
+            {
+                ConsoleHelper.AfficherEntete("Ajouter une Destination");
 
-            Console.WriteLine("TO DO");
+                var destination = new Destination
+                {
+                    Continent = ConsoleSaisie.SaisirChaineObligatoire("Continent:"),
+                    Pays = ConsoleSaisie.SaisirChaineObligatoire("Pays:"),
+                    Region = ConsoleSaisie.SaisirChaineObligatoire("Region:"),
+                    Description = ConsoleSaisie.SaisirChaineObligatoire("Description:"),
+
+                };
+
+                using (var bd = Application.GetBaseDonnees())
+                {
+                    bd.Destinations.Add(destination);
+                    bd.SaveChanges();
+                }
+            }
         }
 
         private void SupprimerDestination()
         {
             ConsoleHelper.AfficherEntete("Supprimer une Destination");
 
-            Console.WriteLine("TO DO");
+            AfficherDestinations();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id à supprimer : ");
+            using (var bd = Application.GetBaseDonnees())
+            {
+                var destination = bd.Destinations.Single(x => x.Id == id);
+                bd.Destinations.Remove(destination);
+                bd.SaveChanges();
+            }
         }
     }
 }

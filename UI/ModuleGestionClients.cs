@@ -68,6 +68,28 @@ namespace BoVoyage_Thomas_Nicolas.UI
             ConsoleHelper.AfficherListe(liste, StrategiesAffichage.GetStrategieClient());
         }
 
+        //private void AjouterClient()
+        //{
+        //    ConsoleHelper.AfficherEntete("Ajouter un Client");
+
+        //    var client = new Client
+        //    {
+        //        Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
+        //        Civilite = ConsoleSaisie.SaisirChaineObligatoire("Civilite:"),
+        //        Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prenom:"),
+        //        Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse:"),
+        //        //saisie d'une date 
+        //        var DateNaissance = 
+        //        DateNaissance = ConsoleSaisie.("Date de naissance:"),
+        //        Email = ConsoleSaisie.SaisirChaineObligatoire("Email:"),
+        //    };
+
+        //    using (var bd = Application.GetBaseDonnees())
+        //    {
+        //        bd.Clients.Add(client);
+        //        bd.SaveChanges();
+        //    }
+        //}
         private void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Ajouter un client");
@@ -92,7 +114,8 @@ namespace BoVoyage_Thomas_Nicolas.UI
             var Age = 20;
             //Avec Entity Framework
             Client nouveauClient = new Client
-            {
+
+            {//passer en EF
                 Nom = Nom,
                 Civilite = Civilite,
                 Prenom = Prenom,
