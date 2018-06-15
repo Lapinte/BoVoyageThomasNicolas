@@ -56,8 +56,6 @@
   <ItemGroup>
     <Compile Include="DAL\BaseDonnees.cs" />
     <Compile Include="Metier\AgenceVoyage.cs" />
-    <Compile Include="Metier\Assurance.cs" />
-    <Compile Include="Metier\AssuranceAnnulation.cs" />
     <Compile Include="Metier\Client.cs" />
     <Compile Include="Metier\Description.cs" />
     <Compile Include="Metier\DossierReservation.cs" />
